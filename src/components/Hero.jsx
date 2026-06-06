@@ -23,7 +23,7 @@ export default function Hero() {
         animate={{ opacity: 1, x: 0, y: 0 }}
         transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
       >
-        <Floral className="h-full w-full" />
+        <Floral variant="peony" className="h-full w-full" />
       </motion.div>
       <motion.div
         className="pointer-events-none absolute -bottom-6 -right-6 h-40 w-40 sm:h-56 sm:w-56"
@@ -31,7 +31,7 @@ export default function Hero() {
         animate={{ opacity: 1, x: 0, y: 0 }}
         transition={{ duration: 1.4, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
       >
-        <Floral className="h-full w-full" flip />
+        <Floral variant="mauve" className="h-full w-full" flip />
       </motion.div>
       <motion.div
         className="pointer-events-none absolute -right-6 -top-6 h-40 w-40 sm:h-56 sm:w-56"
@@ -39,16 +39,15 @@ export default function Hero() {
         animate={{ opacity: 1, x: 0, y: 0 }}
         transition={{ duration: 1.4, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
       >
-        <Floral className="h-full w-full" flip />
+        <Floral variant="white" className="h-full w-full" flip />
       </motion.div>
       <motion.div
         className="pointer-events-none absolute -bottom-4 -left-8 hidden h-32 w-32 sm:block sm:h-44 sm:w-44"
         initial={{ opacity: 0, x: -60, y: 60 }}
         animate={{ opacity: 0.85, x: 0, y: 0 }}
         transition={{ duration: 1.4, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-        style={{ transform: 'scaleY(-1)' }}
       >
-        <Floral className="h-full w-full" />
+        <Floral variant="rose" className="h-full w-full" />
       </motion.div>
       <motion.div
         className="pointer-events-none absolute right-2 top-1/3 hidden h-28 w-20 opacity-60 sm:block"

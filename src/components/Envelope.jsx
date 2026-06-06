@@ -33,7 +33,7 @@ export default function Envelope({ onOpen }) {
         animate={{ opacity: 1, x: 0, y: 0 }}
         transition={{ duration: 1.2 }}
       >
-        <Floral className="h-full w-full" />
+        <Floral variant="peony" className="h-full w-full" />
       </motion.div>
       <motion.div
         className="pointer-events-none absolute -bottom-5 -right-5 h-36 w-36 sm:h-48 sm:w-48"
@@ -41,7 +41,7 @@ export default function Envelope({ onOpen }) {
         animate={{ opacity: 1, x: 0, y: 0 }}
         transition={{ duration: 1.2, delay: 0.1 }}
       >
-        <Floral className="h-full w-full" flip />
+        <Floral variant="bouquet-right" className="h-full w-full" flip />
       </motion.div>
 
       <motion.p

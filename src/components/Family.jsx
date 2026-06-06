@@ -21,13 +21,15 @@ export default function Family() {
     <Section id="family" className="overflow-hidden">
       <FloralAccent
         from="left"
-        className="pointer-events-none absolute -left-6 top-10 h-24 w-24 opacity-60 sm:h-32 sm:w-32"
+        variant="rose"
+        className="pointer-events-none absolute -left-6 top-10 h-28 w-28 opacity-70 sm:h-40 sm:w-40"
       />
       <FloralAccent
         from="right"
+        variant="peony"
         flip
         delay={0.1}
-        className="pointer-events-none absolute -right-6 bottom-10 h-24 w-24 opacity-60 sm:h-32 sm:w-32"
+        className="pointer-events-none absolute -right-6 bottom-10 h-28 w-28 opacity-70 sm:h-40 sm:w-40"
       />
 
       <Reveal className="mb-14 text-center">

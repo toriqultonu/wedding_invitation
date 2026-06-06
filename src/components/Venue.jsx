@@ -15,13 +15,15 @@ export default function Venue() {
       <Sprig className="pointer-events-none absolute -right-3 top-8 h-24 w-20 opacity-60 sm:h-32 sm:w-24" flip />
       <FloralAccent
         from="bottom"
-        className="pointer-events-none absolute -bottom-2 -left-5 h-24 w-24 opacity-60 sm:h-32 sm:w-32"
+        variant="bouquet-left"
+        className="pointer-events-none absolute -bottom-4 -left-6 h-28 w-28 opacity-70 sm:h-40 sm:w-40"
       />
       <FloralAccent
         from="bottom"
+        variant="bouquet-right"
         flip
         delay={0.1}
-        className="pointer-events-none absolute -bottom-2 -right-5 h-24 w-24 opacity-60 sm:h-32 sm:w-32"
+        className="pointer-events-none absolute -bottom-4 -right-6 h-28 w-28 opacity-70 sm:h-40 sm:w-40"
       />
 
       <Reveal className="text-center">

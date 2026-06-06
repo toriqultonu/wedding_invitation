@@ -6,13 +6,15 @@ export default function EventDetails() {
     <Section id="event" className="overflow-hidden">
       <FloralAccent
         from="top"
-        className="pointer-events-none absolute -right-4 -top-2 h-28 w-28 opacity-70 sm:h-36 sm:w-36"
+        variant="white"
+        className="pointer-events-none absolute -right-4 -top-2 h-28 w-28 opacity-75 sm:h-36 sm:w-36"
         flip
       />
       <FloralAccent
         from="bottom"
+        variant="bouquet-left"
         delay={0.15}
-        className="pointer-events-none absolute -bottom-2 -left-4 h-28 w-28 opacity-70 sm:h-36 sm:w-36"
+        className="pointer-events-none absolute -bottom-4 -left-5 h-32 w-32 opacity-75 sm:h-44 sm:w-44"
       />
 
       <Reveal className="text-center">
