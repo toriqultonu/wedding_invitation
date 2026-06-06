@@ -77,10 +77,12 @@ export default function Envelope({ onOpen }) {
 
           {/* the invitation card that slides out */}
           <motion.div
-            className="absolute left-1/2 top-2 z-20 flex h-44 w-[15.5rem] -translate-x-1/2 flex-col items-center justify-center rounded-md border border-gold/40 bg-cream px-4 text-center shadow-md"
+            className="absolute left-1/2 top-2 z-20 flex h-44 w-[15.5rem] flex-col items-center justify-center rounded-md border border-gold/40 bg-cream px-4 text-center shadow-md"
             initial={false}
-            animate={{ y: opened ? '-60%' : 0 }}
-            transition={{ y: { duration: 1, delay: 0.55, ease: [0.22, 1, 0.36, 1] } }}
+            // x:'-50%' centers the card (Framer's transform would otherwise
+            // override Tailwind's -translate-x-1/2); y animates the slide-out.
+            animate={{ x: '-50%', y: opened ? '-60%' : 0 }}
+            transition={{ x: { duration: 0 }, y: { duration: 1, delay: 0.55, ease: [0.22, 1, 0.36, 1] } }}
           >
             <Sprig className="mb-2 h-8 w-8 opacity-80" />
             <p className="font-body text-[0.6rem] uppercase tracking-widest2 text-brown-soft">
