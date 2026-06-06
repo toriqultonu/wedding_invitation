@@ -2,6 +2,10 @@ node_modules
 dist
 dist-ssr
 *.local
+
+# local tooling / reference assets (not part of the site)
+.claude/
+demo_image.jpeg
 .DS_Store
 .vscode/*
 !.vscode/extensions.json
