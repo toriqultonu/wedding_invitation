@@ -6,6 +6,7 @@ dist-ssr
 # local tooling / reference assets (not part of the site)
 .claude/
 demo_image.jpeg
+issue.png
 .DS_Store
 .vscode/*
 !.vscode/extensions.json
