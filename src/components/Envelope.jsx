@@ -15,8 +15,9 @@ export default function Envelope({ onOpen }) {
   const handleOpen = () => {
     if (opened) return
     setOpened(true)
-    // let the open animation play before revealing the page beneath
-    setTimeout(() => onOpen?.(), 1800)
+    // Sequence: flap opens -> card lifts out -> envelope sinks & fades ->
+    // the lone card is held briefly -> onOpen() reveals the page beneath.
+    setTimeout(() => onOpen?.(), 2600)
   }
 
   return (
@@ -72,17 +73,27 @@ export default function Envelope({ onOpen }) {
         style={{ perspective: 1400 }}
       >
         <div className="relative h-48 w-72 origin-center sm:scale-110 lg:scale-125">
-          {/* back panel of the envelope */}
-          <div className="absolute inset-0 z-10 rounded-md border border-gold/50 bg-[#F3EBDD] shadow-xl shadow-brown/15" />
+          {/* back panel of the envelope — sinks & fades after the card is out */}
+          <motion.div
+            className="absolute inset-0 z-10 rounded-md border border-gold/50 bg-[#F3EBDD] shadow-xl shadow-brown/15"
+            initial={false}
+            animate={{ opacity: opened ? 0 : 1, y: opened ? 44 : 0 }}
+            transition={{ duration: 0.7, delay: opened ? 1.45 : 0, ease: [0.22, 1, 0.36, 1] }}
+          />
 
           {/* the invitation card that slides out */}
           <motion.div
             className="absolute left-1/2 top-2 z-20 flex h-44 w-[15.5rem] flex-col items-center justify-center rounded-md border border-gold/40 bg-cream px-4 text-center shadow-md"
             initial={false}
             // x:'-50%' centers the card (Framer's transform would otherwise
-            // override Tailwind's -translate-x-1/2); y animates the slide-out.
-            animate={{ x: '-50%', y: opened ? '-60%' : 0 }}
-            transition={{ x: { duration: 0 }, y: { duration: 1, delay: 0.55, ease: [0.22, 1, 0.36, 1] } }}
+            // override Tailwind's -translate-x-1/2); y lifts it out, scale grows
+            // it into the focal point once it has cleared the envelope.
+            animate={{ x: '-50%', y: opened ? '-86%' : 0, scale: opened ? 1.12 : 1 }}
+            transition={{
+              x: { duration: 0 },
+              y: { duration: 1.1, delay: 0.55, ease: [0.22, 1, 0.36, 1] },
+              scale: { duration: 0.7, delay: 1.4, ease: [0.22, 1, 0.36, 1] },
+            }}
           >
             <Sprig className="mb-2 h-8 w-8 opacity-80" />
             <p className="font-body text-[0.6rem] uppercase tracking-widest2 text-brown-soft">
@@ -97,8 +108,13 @@ export default function Envelope({ onOpen }) {
             </p>
           </motion.div>
 
-          {/* opaque envelope front — fully covers the card until it slides out the top */}
-          <div className="absolute inset-0 z-30 overflow-hidden rounded-md border border-gold/50 bg-[#EEE2CF] shadow-inner">
+          {/* opaque envelope front — covers the card, then sinks & fades away */}
+          <motion.div
+            className="absolute inset-0 z-30 overflow-hidden rounded-md border border-gold/50 bg-[#EEE2CF] shadow-inner"
+            initial={false}
+            animate={{ opacity: opened ? 0 : 1, y: opened ? 44 : 0 }}
+            transition={{ duration: 0.7, delay: opened ? 1.45 : 0, ease: [0.22, 1, 0.36, 1] }}
+          >
             <svg
               viewBox="0 0 288 192"
               preserveAspectRatio="none"
@@ -110,7 +126,7 @@ export default function Envelope({ onOpen }) {
               {/* side folds */}
               <path d="M2 2 L144 86 M286 2 L144 86" stroke="#D4AF37" strokeOpacity="0.18" strokeWidth="1" />
             </svg>
-          </div>
+          </motion.div>
 
           {/* top flap — rotates open about its top edge, then drops behind */}
           <motion.div
@@ -123,10 +139,11 @@ export default function Envelope({ onOpen }) {
               transformStyle: 'preserve-3d',
             }}
             initial={false}
-            animate={{ rotateX: opened ? -175 : 0, zIndex: opened ? 5 : 40 }}
+            animate={{ rotateX: opened ? -175 : 0, zIndex: opened ? 5 : 40, opacity: opened ? 0 : 1 }}
             transition={{
               rotateX: { duration: 0.6, ease: 'easeInOut' },
               zIndex: { delay: 0.5 },
+              opacity: { duration: 0.7, delay: 1.45, ease: [0.22, 1, 0.36, 1] },
             }}
           >
             {/* wax seal sitting on the flap */}
