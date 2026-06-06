@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream text-brown font-body antialiased;
+    /* Subtle paper / watercolour wash so the cream never reads as flat white */
+    background-image:
+      radial-gradient(circle at 12% 8%, rgba(209, 159, 152, 0.10), transparent 38%),
+      radial-gradient(circle at 88% 92%, rgba(156, 175, 136, 0.10), transparent 40%),
+      radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.04), transparent 60%);
+    background-attachment: fixed;
+  }
+
+  /* Slightly tighter, more "engraved" rendering for the serif display text */
+  h1,
+  h2,
+  h3 {
+    @apply font-serif;
+  }
+}
+
+@layer components {
+  /* A thin gold rule with a small diamond in the middle — used as a divider */
+  .gold-divider {
+    @apply flex items-center justify-center gap-3 text-gold;
+  }
+  .gold-divider::before,
+  .gold-divider::after {
+    content: '';
+    @apply block h-px w-16 bg-gold/60 sm:w-24;
+  }
+
+  .section-eyebrow {
+    @apply font-body text-xs uppercase tracking-widest2 text-brown-soft sm:text-sm;
+  }
+}
